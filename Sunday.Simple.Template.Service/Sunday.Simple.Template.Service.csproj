@@ -1,0 +1,20 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net8.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\Sunday.Simple.Template.Common\Sunday.Simple.Template.Common.csproj" />
+      <ProjectReference Include="..\Sunday.Simple.Template.IService\Sunday.Simple.Template.IService.csproj" />
+      <ProjectReference Include="..\Sunday.Simple.Template.Model\Sunday.Simple.Template.Model.csproj" />
+      <ProjectReference Include="..\Sunday.Simple.Template.Repository\Sunday.Simple.Template.Repository.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <PackageReference Include="AutoMapper" Version="12.0.1" />
+    </ItemGroup>
+
+</Project>
