@@ -17,7 +17,7 @@ builder.Services.AddAutoMapper(typeof(AutoMapperConfig));
 
 builder.Services.AddSingleton(new AppSettings(builder.Configuration));
 
-
+builder.Services.AddDbContext();
 
 var app = builder.Build();
 

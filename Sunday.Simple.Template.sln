@@ -1,18 +1,23 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sunday.Simple.Template.Api", "Sunday.Simple.Template.Api\Sunday.Simple.Template.Api.csproj", "{C1F385DD-40FA-4F20-99C1-66AB139C21ED}"
+# Visual Studio Version 17
+VisualStudioVersion = 17.9.34714.143
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sunday.Simple.Template.Api", "Sunday.Simple.Template.Api\Sunday.Simple.Template.Api.csproj", "{C1F385DD-40FA-4F20-99C1-66AB139C21ED}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sunday.Simple.Template.IService", "Sunday.Simple.Template.IService\Sunday.Simple.Template.IService.csproj", "{6139C144-4496-40A3-ADF0-F5B373D0E401}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sunday.Simple.Template.IService", "Sunday.Simple.Template.IService\Sunday.Simple.Template.IService.csproj", "{6139C144-4496-40A3-ADF0-F5B373D0E401}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sunday.Simple.Template.Service", "Sunday.Simple.Template.Service\Sunday.Simple.Template.Service.csproj", "{574999A9-ECF3-42B1-9E88-B60EA6C6B6D5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sunday.Simple.Template.Service", "Sunday.Simple.Template.Service\Sunday.Simple.Template.Service.csproj", "{574999A9-ECF3-42B1-9E88-B60EA6C6B6D5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sunday.Simple.Template.Common", "Sunday.Simple.Template.Common\Sunday.Simple.Template.Common.csproj", "{797A60B4-6407-4503-85A8-948A119D87BA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sunday.Simple.Template.Common", "Sunday.Simple.Template.Common\Sunday.Simple.Template.Common.csproj", "{797A60B4-6407-4503-85A8-948A119D87BA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sunday.Simple.Template.Repository", "Sunday.Simple.Template.Repository\Sunday.Simple.Template.Repository.csproj", "{580B2369-4241-4B6D-9FDB-8842661EB2BE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sunday.Simple.Template.Repository", "Sunday.Simple.Template.Repository\Sunday.Simple.Template.Repository.csproj", "{580B2369-4241-4B6D-9FDB-8842661EB2BE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sunday.Simple.Template.Extension", "Sunday.Simple.Template.Extension\Sunday.Simple.Template.Extension.csproj", "{2A6D8D37-49E4-4EC1-83B2-38939DBCB63B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sunday.Simple.Template.Extension", "Sunday.Simple.Template.Extension\Sunday.Simple.Template.Extension.csproj", "{2A6D8D37-49E4-4EC1-83B2-38939DBCB63B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sunday.Simple.Template.Model", "Sunday.Simple.Template.Model\Sunday.Simple.Template.Model.csproj", "{6328BCEB-DA7D-4322-BC74-D90AF3B9CA71}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sunday.Simple.Template.Model", "Sunday.Simple.Template.Model\Sunday.Simple.Template.Model.csproj", "{6328BCEB-DA7D-4322-BC74-D90AF3B9CA71}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sunday.Simple.Template.Entity", "Sunday.Simple.Template.Entity\Sunday.Simple.Template.Entity.csproj", "{5643FF5F-A5D6-4E04-B198-4AE8496ABEF7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -48,5 +53,15 @@ Global
 		{6328BCEB-DA7D-4322-BC74-D90AF3B9CA71}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6328BCEB-DA7D-4322-BC74-D90AF3B9CA71}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6328BCEB-DA7D-4322-BC74-D90AF3B9CA71}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5643FF5F-A5D6-4E04-B198-4AE8496ABEF7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5643FF5F-A5D6-4E04-B198-4AE8496ABEF7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5643FF5F-A5D6-4E04-B198-4AE8496ABEF7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5643FF5F-A5D6-4E04-B198-4AE8496ABEF7}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {A714CC8A-642A-4657-A6AE-46B0AD0FA3CC}
 	EndGlobalSection
 EndGlobal

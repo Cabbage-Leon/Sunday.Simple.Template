@@ -6,4 +6,9 @@
         <Nullable>enable</Nullable>
     </PropertyGroup>
 
+    <ItemGroup>
+      <ProjectReference Include="..\Sunday.Simple.Template.Common\Sunday.Simple.Template.Common.csproj" />
+      <ProjectReference Include="..\Sunday.Simple.Template.Entity\Sunday.Simple.Template.Entity.csproj" />
+    </ItemGroup>
+
 </Project>

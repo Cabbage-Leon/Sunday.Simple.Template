@@ -28,9 +28,9 @@ public class BaseServices<TEntity, TVo> : IBaseService<TEntity, TVo> where TEnti
         return _mapper.Map<List<TVo>>(entities);
     }
 
-    public async Task<long> Add(TEntity entity)
+    public async Task Add(TEntity entity)
     {
-        return await _baseRepository.Add(entity);
+        await _baseRepository.Add(entity);
     }
 
     public async Task<List<TEntity>> QuerySplit(Expression<Func<TEntity, bool>> whereExpression,

@@ -1,6 +1,6 @@
-﻿using Sunday.Simple.Template.IService.Base;
+﻿using Sunday.Simple.Template.Entity;
+using Sunday.Simple.Template.IService.Base;
 using Sunday.Simple.Template.Model.Dto;
-using Sunday.Simple.Template.Model.Entity;
 
 namespace Sunday.Simple.Template.IService;
 

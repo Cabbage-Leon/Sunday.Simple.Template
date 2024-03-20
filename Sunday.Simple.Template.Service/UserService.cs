@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
+using Sunday.Simple.Template.Entity;
 using Sunday.Simple.Template.IService;
 using Sunday.Simple.Template.Model.Dto;
-using Sunday.Simple.Template.Model.Entity;
 using Sunday.Simple.Template.Repository.Base;
 using Sunday.Simple.Template.Service.Base;
 
@@ -15,6 +15,6 @@ public class UserService : BaseServices<SysUser, UserDto>, IUserService
 
     public Task<UserDto> Get(int id)
     {
-        return Query() 
+        throw new NotImplementedException();
     }
 }

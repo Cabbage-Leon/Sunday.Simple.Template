@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
+using Sunday.Simple.Template.Entity;
 using Sunday.Simple.Template.Model.Dto;
-using Sunday.Simple.Template.Model.Entity;
 
 namespace Repository.Extension.ServiceExtensions;
 

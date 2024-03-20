@@ -7,6 +7,7 @@
     </PropertyGroup>
 
     <ItemGroup>
+      <ProjectReference Include="..\Sunday.Simple.Template.Entity\Sunday.Simple.Template.Entity.csproj" />
       <ProjectReference Include="..\Sunday.Simple.Template.Model\Sunday.Simple.Template.Model.csproj" />
     </ItemGroup>
 

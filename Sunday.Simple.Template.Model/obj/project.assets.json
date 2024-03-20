@@ -8,24 +8,26 @@
     "net8.0": []
   },
   "packageFolders": {
-    "C:\\Users\\covs\\.nuget\\packages\\": {}
+    "C:\\Users\\74556\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Codes\\Sunday.Simple.Template\\Sunday.Simple.Template.Model\\Sunday.Simple.Template.Model.csproj",
+      "projectUniqueName": "D:\\Code\\GithubCodes\\Sunday.Simple.Template\\Sunday.Simple.Template.Model\\Sunday.Simple.Template.Model.csproj",
       "projectName": "Sunday.Simple.Template.Model",
-      "projectPath": "C:\\Codes\\Sunday.Simple.Template\\Sunday.Simple.Template.Model\\Sunday.Simple.Template.Model.csproj",
-      "packagesPath": "C:\\Users\\covs\\.nuget\\packages\\",
-      "outputPath": "C:\\Codes\\Sunday.Simple.Template\\Sunday.Simple.Template.Model\\obj\\",
+      "projectPath": "D:\\Code\\GithubCodes\\Sunday.Simple.Template\\Sunday.Simple.Template.Model\\Sunday.Simple.Template.Model.csproj",
+      "packagesPath": "C:\\Users\\74556\\.nuget\\packages\\",
+      "outputPath": "D:\\Code\\GithubCodes\\Sunday.Simple.Template\\Sunday.Simple.Template.Model\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\covs\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        "C:\\Users\\74556\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "net8.0"
       ],
       "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -38,6 +40,11 @@
         "warnAsError": [
           "NU1605"
         ]
+      },
+      "restoreAuditProperties": {
+        "enableAudit": "true",
+        "auditLevel": "low",
+        "auditMode": "direct"
       }
     },
     "frameworks": {
@@ -59,7 +66,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.100/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.202/PortableRuntimeIdentifierGraph.json"
       }
     }
   }
