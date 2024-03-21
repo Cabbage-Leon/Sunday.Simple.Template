@@ -9,13 +9,13 @@ namespace Repository.Extension.ServiceExtensions
     {
         public static IServiceCollection AddDbContext(this IServiceCollection services, IConfiguration configuration)
         {
-            if (services == null) throw new ArgumentNullException(nameof(services));
+            ArgumentNullException.ThrowIfNull(services);
 
             services.AddRepository(options =>
             {
                 var dbSettings = configuration.GetSection(nameof(DbSettings)).Get<DbSettings>();
                 
-                options.UseNpgsql(dbSettings.ConnectionString,
+                options.UseNpgsql(dbSettings!.ConnectionString,
                     opt => opt.CommandTimeout(dbSettings.CommandTimeout).EnableRetryOnFailure());
 
                 if (dbSettings.EnableSensitiveDataLogging) options.EnableSensitiveDataLogging();

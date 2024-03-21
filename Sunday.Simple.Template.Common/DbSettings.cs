@@ -3,7 +3,7 @@
     public sealed class DbSettings
     {
         public int CommandTimeout { get; set; } = 30;
-        public string ConnectionString { get; set; }
+        public required string ConnectionString { get; set; }
         public bool EnableSensitiveDataLogging { get; set; }
     }
 }

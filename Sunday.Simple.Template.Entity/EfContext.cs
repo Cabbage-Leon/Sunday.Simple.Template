@@ -5,16 +5,12 @@ using Sunday.Simple.Template.Entity.Maps;
 
 namespace Sunday.Simple.Template.Entity
 {
-    public class EfContext : DbContext
+    public class EfContext(DbContextOptions options) : DbContext(options)
     {
-        public EfContext(DbContextOptions options) : base(options)
-        {
-        }
-
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             var assemblies = GetCurrentPathAssembly()
-                .Where(x => !x.GetName().Name.Equals("Sunday.Simple.Template.Entity"));
+                .Where(x => !x.GetName().Name!.Equals("Sunday.Simple.Template.Entity"));
             foreach (var assembly in assemblies)
             {
                 //找到所有实体类
@@ -68,30 +64,32 @@ namespace Sunday.Simple.Template.Entity
                 switch (entry.State)
                 {
                     case EntityState.Modified:
-                        entityBase.UpdateModifyTime();
+                        entityBase!.UpdateModifyTime();
                         break;
                     case EntityState.Added:
-                        entityBase.UpdateCreateTime();
+                        entityBase!.UpdateCreateTime();
                         break;
+                    case EntityState.Detached:
+                        break;
+                    case EntityState.Unchanged:
+                        break;
+                    case EntityState.Deleted:
+                        break;
+                    default:
+                        throw new ArgumentOutOfRangeException();
                 }
             }
         }
-        
-        private List<Assembly> GetCurrentPathAssembly()
+
+        private IEnumerable<Assembly> GetCurrentPathAssembly()
         {
-            var dlls = DependencyContext.Default.CompileLibraries
+            var dlls = DependencyContext.Default!.CompileLibraries
                 .Where(x => !x.Name.StartsWith("Microsoft") && !x.Name.StartsWith("System"))
                 .ToList();
             var list = new List<Assembly>();
-            if (dlls.Any())
+            if (dlls.Count != 0)
             {
-                foreach (var dll in dlls)
-                {
-                    if (dll.Type == "project")
-                    {
-                        list.Add(Assembly.Load(dll.Name));
-                    }
-                }
+                list.AddRange(from dll in dlls where dll.Type == "project" select Assembly.Load(dll.Name));
             }
             return list;
         }

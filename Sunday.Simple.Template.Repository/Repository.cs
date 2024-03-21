@@ -1,34 +1,19 @@
 using System.Linq.Expressions;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.ChangeTracking;
 using Sunday.Simple.Template.Entity;
 using Sunday.Simple.Template.Repository.Base;
 
 namespace Sunday.Simple.Template.Repository;
 
-public class Repository<TEntity>
-    : Repository<TEntity, string>, IRepository<TEntity>
-    where TEntity : class, IEntity
-{
-    public Repository(DbContext dbDbContext) : base(dbDbContext)
-    {
-    }
-}
+public class Repository<TEntity>(DbContext dbDbContext) : Repository<TEntity, string>(dbDbContext), IRepository<TEntity>
+    where TEntity : class, IEntity;
 
-public class Repository<TEntity, TPrimaryKey>
-    : RepositoryBase<TEntity, TPrimaryKey>
+public class Repository<TEntity, TPrimaryKey>(DbContext context) : RepositoryBase<TEntity, TPrimaryKey>
     where TEntity : class, IEntity<TPrimaryKey>
 {
-    private readonly DbContext _dbContext;
-
-    public virtual DbSet<TEntity> Table
+    protected virtual DbSet<TEntity> Table
     {
-        get { return _dbContext.Set<TEntity>(); }
-    }
-
-    public Repository(DbContext context)
-    {
-        _dbContext = context;
+        get { return context.Set<TEntity>(); }
     }
 
     public override IQueryable<TEntity> Query()
@@ -49,7 +34,7 @@ public class Repository<TEntity, TPrimaryKey>
 
     public override async Task<TEntity> InsertAsync(TEntity entity)
     {
-        EntityEntry<TEntity> entityEntry = await Table.AddAsync(entity);
+        var entityEntry = await Table.AddAsync(entity);
         return entityEntry.Entity;
     }
 
@@ -67,7 +52,7 @@ public class Repository<TEntity, TPrimaryKey>
     public override TEntity Update(TEntity entity)
     {
         AttachIfNot(entity);
-        _dbContext.Entry(entity).State = EntityState.Modified;
+        context.Entry(entity).State = EntityState.Modified;
         return entity;
     }
 
@@ -143,7 +128,7 @@ public class Repository<TEntity, TPrimaryKey>
 
     protected virtual void AttachIfNot(TEntity entity)
     {
-        EntityEntry entry = _dbContext.ChangeTracker.Entries().FirstOrDefault(ent => ent.Entity == entity);
+        var entry = context.ChangeTracker.Entries().FirstOrDefault(ent => ent.Entity == entity);
         if (entry != null)
         {
             return;
@@ -154,7 +139,7 @@ public class Repository<TEntity, TPrimaryKey>
 
     private TEntity GetFromChangeTrackerOrNull(TPrimaryKey id)
     {
-        var entry = _dbContext.ChangeTracker.Entries()
+        var entry = context.ChangeTracker.Entries()
             .FirstOrDefault(
                 ent =>
                     ent.Entity is TEntity &&

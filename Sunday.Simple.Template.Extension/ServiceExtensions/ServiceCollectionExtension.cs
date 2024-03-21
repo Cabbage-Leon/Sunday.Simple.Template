@@ -38,32 +38,31 @@ namespace Repository.Extension.ServiceExtensions;
         /// </summary>
         private static IServiceCollection AddRepository(this IServiceCollection services)
         {
-            IEnumerable<Assembly> assemblies = AppDomain.CurrentDomain.GetCurrentPathAssembly().Where(x => !x.GetName().Name.Equals("Sunday.Simple.Template.Repository"));
-            services.AddRepository(assemblies, typeof(IRepository<>));
-            services.AddRepository(assemblies, typeof(IRepository<,>));
+            var assemblies = AppDomain.CurrentDomain.GetCurrentPathAssembly().Where(x => !x.GetName().Name!.Equals("Sunday.Simple.Template.Repository"));
             services.AddTransient(typeof(IRepository<>), typeof(Repository<>));
             services.AddTransient(typeof(IRepository<,>), typeof(Repository<,>));
+            services.AddRepository(assemblies, typeof(IRepository<>));
+            services.AddRepository(assemblies, typeof(IRepository<,>));
             return services;
         }
 
         /// <summary>
         /// 将实现了IRepository接口的仓储，注册进容器
+        /// IRepository<> => ImplementedClass => Interface 
         /// </summary>
         private static void AddRepository(this IServiceCollection services, IEnumerable<Assembly> assemblies, Type baseType)
         {
             foreach (var assembly in assemblies)
             {
                 var types = assembly.GetTypes()
-                                    .Where(x => x.IsClass
-                                            && !x.IsAbstract
-                                            && x.BaseType != null
-                                            && x.HasImplementedRawGeneric(baseType));
+                                    .Where(x => x is { IsClass: true, IsAbstract: false, BaseType: not null }
+                                                && x.HasImplementedRawGeneric(baseType));
                 foreach (var type in types)
                 {
-                    Type[] interfaces = type.GetInterfaces();
-                    Type interfaceType = interfaces.FirstOrDefault(x => x.Name == $"I{type.Name}");
-                    if (interfaceType == null) interfaceType = type;
-                    ServiceDescriptor serviceDescriptor = new ServiceDescriptor(interfaceType, type, ServiceLifetime.Transient);
+                    var interfaces = type.GetInterfaces();
+                    //如果有UserRepository实现接口IUserRepository，优先注册这对，否则注册自己
+                    var interfaceType = interfaces.FirstOrDefault(x => x.Name == $"I{type.Name}") ?? type;
+                    var serviceDescriptor = new ServiceDescriptor(interfaceType, type, ServiceLifetime.Transient);
                     if (!services.Contains(serviceDescriptor)) services.Add(serviceDescriptor);
                 }
             }

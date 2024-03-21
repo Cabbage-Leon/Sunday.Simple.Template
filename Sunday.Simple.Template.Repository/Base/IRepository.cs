@@ -4,11 +4,9 @@ using Sunday.Simple.Template.Entity;
 namespace Sunday.Simple.Template.Repository.Base;
 
 public interface IRepository<TEntity> : IRepository<TEntity, string>
-    where TEntity : class, IEntity
-{
-}
+    where TEntity : class, IEntity;
 
-public interface IRepository<TEntity, TPrimaryKey>
+public interface IRepository<TEntity, in TPrimaryKey>
     where TEntity : class, IEntity<TPrimaryKey>
 {
     #region Query

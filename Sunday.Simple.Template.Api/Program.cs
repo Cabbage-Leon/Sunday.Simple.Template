@@ -1,4 +1,3 @@
-using System.Diagnostics;
 using Repository.Extension.ServiceExtensions;
 using Serilog;
 using Sunday.Simple.Template.Common;
@@ -34,7 +33,7 @@ try
 
     builder.Services.AddScoped<IUserService, UserService>();
     
-    Log.Information("Program:Main:Services configuration done.");
+    Log.Information("Program:Main:Services configuration done");
     
     var app = builder.Build();
 
