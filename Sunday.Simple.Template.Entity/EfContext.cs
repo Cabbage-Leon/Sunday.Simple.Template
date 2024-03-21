@@ -1,30 +1,99 @@
-﻿using Microsoft.EntityFrameworkCore.Infrastructure;
+﻿using System.Reflection;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyModel;
+using Sunday.Simple.Template.Entity.Maps;
 
 namespace Sunday.Simple.Template.Entity
 {
-    public partial class EfContext(DbContextOptions options) : DbContext(options)
+    public class EfContext : DbContext
     {
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        public EfContext(DbContextOptions options) : base(options)
         {
-            if (!optionsBuilder.IsConfigured ||
-                (!optionsBuilder.Options.Extensions.OfType<RelationalOptionsExtension>().Any(ext => !string.IsNullOrEmpty(ext.ConnectionString) || ext.Connection != null) &&
-                 !optionsBuilder.Options.Extensions.Any(ext => !(ext is RelationalOptionsExtension) && !(ext is CoreOptionsExtension))))
+        }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            var assemblies = GetCurrentPathAssembly()
+                .Where(x => !x.GetName().Name.Equals("Sunday.Simple.Template.Entity"));
+            foreach (var assembly in assemblies)
             {
-                optionsBuilder.UseNpgsql(GetConnectionString("ConnectionString"));
+                //找到所有实体类
+                var entityTypes = assembly.GetTypes()
+                    .Where(type => !string.IsNullOrWhiteSpace(type.Namespace))
+                    .Where(type => type.IsClass)
+                    .Where(type => type.Name != nameof(Entity))
+                    .Where(type => type.BaseType != null)
+                    .Where(type => typeof(ITrack).IsAssignableFrom(type));
+
+                foreach (var entityType in entityTypes)
+                {
+                    if (modelBuilder.Model.FindEntityType(entityType) != null) continue;
+                    modelBuilder.Model.AddEntityType(entityType);
+                }
             }
-            CustomizeConfiguration(ref optionsBuilder);
-            base.OnConfiguring(optionsBuilder);
+
+            base.OnModelCreating(modelBuilder);
+            
+            #region 注册领域模型与数据库的映射关系
+
+            modelBuilder.ApplyConfiguration(new SysUserMap());
+
+            #endregion 注册领域模型与数据库的映射关系
         }
 
-        private static string GetConnectionString(string connectionStringName)
+        public override int SaveChanges()
         {
-            var configurationBuilder = new ConfigurationBuilder().AddJsonFile("appsettings.json", optional: true, reloadOnChange: false);
-            var configuration = configurationBuilder.Build();
-            return configuration.GetConnectionString(connectionStringName);
+            SetTrackInfo();
+            return base.SaveChanges();
         }
 
-        partial void CustomizeConfiguration(ref DbContextOptionsBuilder optionsBuilder);
+        public override Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)
+        {
+            SetTrackInfo();
+            return base.SaveChangesAsync(cancellationToken);
+        }
+
+        private void SetTrackInfo()
+        {
+            ChangeTracker.DetectChanges();
+
+            //新增和更新的实体
+            var entries = this.ChangeTracker.Entries()
+                .Where(x => x.Entity is ITrack)
+                .Where(x => x.State == EntityState.Added || x.State == EntityState.Modified);
+            foreach (var entry in entries)
+            {
+                var entity = entry.Entity;
+                var entityBase = entity as ITrack;
+                switch (entry.State)
+                {
+                    case EntityState.Modified:
+                        entityBase.UpdateModifyTime();
+                        break;
+                    case EntityState.Added:
+                        entityBase.UpdateCreateTime();
+                        break;
+                }
+            }
+        }
+        
+        private List<Assembly> GetCurrentPathAssembly()
+        {
+            var dlls = DependencyContext.Default.CompileLibraries
+                .Where(x => !x.Name.StartsWith("Microsoft") && !x.Name.StartsWith("System"))
+                .ToList();
+            var list = new List<Assembly>();
+            if (dlls.Any())
+            {
+                foreach (var dll in dlls)
+                {
+                    if (dll.Type == "project")
+                    {
+                        list.Add(Assembly.Load(dll.Name));
+                    }
+                }
+            }
+            return list;
+        }
     }
 }

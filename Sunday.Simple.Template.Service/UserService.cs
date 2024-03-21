@@ -3,18 +3,19 @@ using Sunday.Simple.Template.Entity;
 using Sunday.Simple.Template.IService;
 using Sunday.Simple.Template.Model.Dto;
 using Sunday.Simple.Template.Repository.Base;
-using Sunday.Simple.Template.Service.Base;
 
 namespace Sunday.Simple.Template.Service;
 
-public class UserService : BaseServices<SysUser, UserDto>, IUserService
+public class UserService(IRepository<SysUser, int> repository, IMapper mapper) : IUserService
 {
-    public UserService(IMapper mapper, IBaseRepository<SysUser> baseRepository) : base(mapper, baseRepository)
+    public async Task<UserDto> Get(int id)
     {
+        var model = await repository.GetAsync(id);
+        return mapper.Map<UserDto>(model);
     }
 
-    public Task<UserDto> Get(int id)
+    public async Task Add(SysUser user)
     {
-        throw new NotImplementedException();
+        await repository.InsertAsync(user);
     }
 }

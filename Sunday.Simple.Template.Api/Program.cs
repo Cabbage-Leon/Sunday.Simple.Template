@@ -1,32 +1,57 @@
+using System.Diagnostics;
 using Repository.Extension.ServiceExtensions;
+using Serilog;
 using Sunday.Simple.Template.Common;
+using Sunday.Simple.Template.IService;
+using Sunday.Simple.Template.Service;
 
-AppContext.SetSwitch("Npgsql.EnableLegacyTimestampBehavior", true);
-AppContext.SetSwitch("Npgsql.DisableDateTimeInfinityConversions", true);
-
-var builder = WebApplication.CreateBuilder(args);
-
-builder.Services.AddControllers();
-
-// Add services to the container.
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
-builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
-
-builder.Services.AddAutoMapper(typeof(AutoMapperConfig));
-
-builder.Services.AddSingleton(new AppSettings(builder.Configuration));
-
-builder.Services.AddDbContext();
-
-var app = builder.Build();
-
-// Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
+try
 {
-    app.UseSwagger();
-    app.UseSwaggerUI();
+    Log.Logger = new LoggerConfiguration()
+        .Enrich.FromLogContext()
+        .WriteTo.Console()
+        .CreateLogger();
+
+    Log.Information("Initializing in Api:Main...");
+
+    var builder = WebApplication.CreateBuilder(args);
+
+    Log.Information("Program:Main:WebApplication Builder created");
+    
+    Log.Information("Program:Main:Starting configuring Services...");
+    
+    builder.Services.AddControllers();
+    
+    builder.Services.AddAutoMapper(typeof(AutoMapperConfig));
+    AutoMapperConfig.RegisterMappings();
+    
+    builder.Services.AddEndpointsApiExplorer();
+    builder.Services.AddSwaggerGen();
+    
+    builder.Services.AddSingleton(new AppSettings(builder.Configuration));
+
+    builder.Services.AddDbContext(builder.Configuration);
+
+    builder.Services.AddScoped<IUserService, UserService>();
+    
+    Log.Information("Program:Main:Services configuration done.");
+    
+    var app = builder.Build();
+
+    if (app.Environment.IsDevelopment())
+    {
+        app.UseSwagger();
+        app.UseSwaggerUI();
+    }
+
+    app.MapControllers();
+
+    app.Run();
+    
+    Log.Information("Program:App configuration done");
 }
-
-app.UseHttpsRedirection();
-
+catch (Exception ex)
+{
+    Log.Logger.Fatal(ex, "Program:Main:Fatal error in Main");
+    Environment.Exit(1);
+}

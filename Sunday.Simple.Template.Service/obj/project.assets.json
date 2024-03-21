@@ -1830,43 +1830,41 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\74556\\.nuget\\packages\\": {}
+    "C:\\Users\\covs\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Code\\GithubCodes\\Sunday.Simple.Template\\Sunday.Simple.Template.Service\\Sunday.Simple.Template.Service.csproj",
+      "projectUniqueName": "C:\\Codes\\Sunday.Simple.Template\\Sunday.Simple.Template.Service\\Sunday.Simple.Template.Service.csproj",
       "projectName": "Sunday.Simple.Template.Service",
-      "projectPath": "D:\\Code\\GithubCodes\\Sunday.Simple.Template\\Sunday.Simple.Template.Service\\Sunday.Simple.Template.Service.csproj",
-      "packagesPath": "C:\\Users\\74556\\.nuget\\packages\\",
-      "outputPath": "D:\\Code\\GithubCodes\\Sunday.Simple.Template\\Sunday.Simple.Template.Service\\obj\\",
+      "projectPath": "C:\\Codes\\Sunday.Simple.Template\\Sunday.Simple.Template.Service\\Sunday.Simple.Template.Service.csproj",
+      "packagesPath": "C:\\Users\\covs\\.nuget\\packages\\",
+      "outputPath": "C:\\Codes\\Sunday.Simple.Template\\Sunday.Simple.Template.Service\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\74556\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        "C:\\Users\\covs\\AppData\\Roaming\\NuGet\\NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net8.0"
       ],
       "sources": {
-        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
         "net8.0": {
           "targetAlias": "net8.0",
           "projectReferences": {
-            "D:\\Code\\GithubCodes\\Sunday.Simple.Template\\Sunday.Simple.Template.Common\\Sunday.Simple.Template.Common.csproj": {
-              "projectPath": "D:\\Code\\GithubCodes\\Sunday.Simple.Template\\Sunday.Simple.Template.Common\\Sunday.Simple.Template.Common.csproj"
+            "C:\\Codes\\Sunday.Simple.Template\\Sunday.Simple.Template.Common\\Sunday.Simple.Template.Common.csproj": {
+              "projectPath": "C:\\Codes\\Sunday.Simple.Template\\Sunday.Simple.Template.Common\\Sunday.Simple.Template.Common.csproj"
             },
-            "D:\\Code\\GithubCodes\\Sunday.Simple.Template\\Sunday.Simple.Template.IService\\Sunday.Simple.Template.IService.csproj": {
-              "projectPath": "D:\\Code\\GithubCodes\\Sunday.Simple.Template\\Sunday.Simple.Template.IService\\Sunday.Simple.Template.IService.csproj"
+            "C:\\Codes\\Sunday.Simple.Template\\Sunday.Simple.Template.IService\\Sunday.Simple.Template.IService.csproj": {
+              "projectPath": "C:\\Codes\\Sunday.Simple.Template\\Sunday.Simple.Template.IService\\Sunday.Simple.Template.IService.csproj"
             },
-            "D:\\Code\\GithubCodes\\Sunday.Simple.Template\\Sunday.Simple.Template.Model\\Sunday.Simple.Template.Model.csproj": {
-              "projectPath": "D:\\Code\\GithubCodes\\Sunday.Simple.Template\\Sunday.Simple.Template.Model\\Sunday.Simple.Template.Model.csproj"
+            "C:\\Codes\\Sunday.Simple.Template\\Sunday.Simple.Template.Model\\Sunday.Simple.Template.Model.csproj": {
+              "projectPath": "C:\\Codes\\Sunday.Simple.Template\\Sunday.Simple.Template.Model\\Sunday.Simple.Template.Model.csproj"
             },
-            "D:\\Code\\GithubCodes\\Sunday.Simple.Template\\Sunday.Simple.Template.Repository\\Sunday.Simple.Template.Repository.csproj": {
-              "projectPath": "D:\\Code\\GithubCodes\\Sunday.Simple.Template\\Sunday.Simple.Template.Repository\\Sunday.Simple.Template.Repository.csproj"
+            "C:\\Codes\\Sunday.Simple.Template\\Sunday.Simple.Template.Repository\\Sunday.Simple.Template.Repository.csproj": {
+              "projectPath": "C:\\Codes\\Sunday.Simple.Template\\Sunday.Simple.Template.Repository\\Sunday.Simple.Template.Repository.csproj"
             }
           }
         }
@@ -1875,11 +1873,6 @@
         "warnAsError": [
           "NU1605"
         ]
-      },
-      "restoreAuditProperties": {
-        "enableAudit": "true",
-        "auditLevel": "low",
-        "auditMode": "direct"
       }
     },
     "frameworks": {
@@ -1907,7 +1900,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.202/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.100/PortableRuntimeIdentifierGraph.json"
       }
     }
   }

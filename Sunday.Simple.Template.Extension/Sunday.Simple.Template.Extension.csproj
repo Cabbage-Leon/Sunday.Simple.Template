@@ -11,6 +11,7 @@
       <ProjectReference Include="..\Sunday.Simple.Template.Common\Sunday.Simple.Template.Common.csproj" />
       <ProjectReference Include="..\Sunday.Simple.Template.Entity\Sunday.Simple.Template.Entity.csproj" />
       <ProjectReference Include="..\Sunday.Simple.Template.Model\Sunday.Simple.Template.Model.csproj" />
+      <ProjectReference Include="..\Sunday.Simple.Template.Repository\Sunday.Simple.Template.Repository.csproj" />
     </ItemGroup>
 
 </Project>

@@ -17,6 +17,7 @@
       <ProjectReference Include="..\Sunday.Simple.Template.Extension\Sunday.Simple.Template.Extension.csproj" />
       <ProjectReference Include="..\Sunday.Simple.Template.IService\Sunday.Simple.Template.IService.csproj" />
       <ProjectReference Include="..\Sunday.Simple.Template.Model\Sunday.Simple.Template.Model.csproj" />
+      <ProjectReference Include="..\Sunday.Simple.Template.Service\Sunday.Simple.Template.Service.csproj" />
     </ItemGroup>
 
 </Project>

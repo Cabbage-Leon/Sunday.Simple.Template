@@ -1789,37 +1789,35 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\74556\\.nuget\\packages\\": {}
+    "C:\\Users\\covs\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Code\\GithubCodes\\Sunday.Simple.Template\\Sunday.Simple.Template.IService\\Sunday.Simple.Template.IService.csproj",
+      "projectUniqueName": "C:\\Codes\\Sunday.Simple.Template\\Sunday.Simple.Template.IService\\Sunday.Simple.Template.IService.csproj",
       "projectName": "Sunday.Simple.Template.IService",
-      "projectPath": "D:\\Code\\GithubCodes\\Sunday.Simple.Template\\Sunday.Simple.Template.IService\\Sunday.Simple.Template.IService.csproj",
-      "packagesPath": "C:\\Users\\74556\\.nuget\\packages\\",
-      "outputPath": "D:\\Code\\GithubCodes\\Sunday.Simple.Template\\Sunday.Simple.Template.IService\\obj\\",
+      "projectPath": "C:\\Codes\\Sunday.Simple.Template\\Sunday.Simple.Template.IService\\Sunday.Simple.Template.IService.csproj",
+      "packagesPath": "C:\\Users\\covs\\.nuget\\packages\\",
+      "outputPath": "C:\\Codes\\Sunday.Simple.Template\\Sunday.Simple.Template.IService\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\74556\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        "C:\\Users\\covs\\AppData\\Roaming\\NuGet\\NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net8.0"
       ],
       "sources": {
-        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
         "net8.0": {
           "targetAlias": "net8.0",
           "projectReferences": {
-            "D:\\Code\\GithubCodes\\Sunday.Simple.Template\\Sunday.Simple.Template.Entity\\Sunday.Simple.Template.Entity.csproj": {
-              "projectPath": "D:\\Code\\GithubCodes\\Sunday.Simple.Template\\Sunday.Simple.Template.Entity\\Sunday.Simple.Template.Entity.csproj"
+            "C:\\Codes\\Sunday.Simple.Template\\Sunday.Simple.Template.Entity\\Sunday.Simple.Template.Entity.csproj": {
+              "projectPath": "C:\\Codes\\Sunday.Simple.Template\\Sunday.Simple.Template.Entity\\Sunday.Simple.Template.Entity.csproj"
             },
-            "D:\\Code\\GithubCodes\\Sunday.Simple.Template\\Sunday.Simple.Template.Model\\Sunday.Simple.Template.Model.csproj": {
-              "projectPath": "D:\\Code\\GithubCodes\\Sunday.Simple.Template\\Sunday.Simple.Template.Model\\Sunday.Simple.Template.Model.csproj"
+            "C:\\Codes\\Sunday.Simple.Template\\Sunday.Simple.Template.Model\\Sunday.Simple.Template.Model.csproj": {
+              "projectPath": "C:\\Codes\\Sunday.Simple.Template\\Sunday.Simple.Template.Model\\Sunday.Simple.Template.Model.csproj"
             }
           }
         }
@@ -1828,11 +1826,6 @@
         "warnAsError": [
           "NU1605"
         ]
-      },
-      "restoreAuditProperties": {
-        "enableAudit": "true",
-        "auditLevel": "low",
-        "auditMode": "direct"
       }
     },
     "frameworks": {
@@ -1854,7 +1847,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.202/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.100/PortableRuntimeIdentifierGraph.json"
       }
     }
   }

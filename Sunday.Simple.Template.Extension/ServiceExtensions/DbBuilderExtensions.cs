@@ -2,21 +2,19 @@
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Sunday.Simple.Template.Common;
-using Sunday.Simple.Template.Entity;
 
 namespace Repository.Extension.ServiceExtensions
 {
     public static class DbBuilderExtensions
     {
-        public static IServiceCollection AddDbContext(this IServiceCollection services)
+        public static IServiceCollection AddDbContext(this IServiceCollection services, IConfiguration configuration)
         {
             if (services == null) throw new ArgumentNullException(nameof(services));
 
-            services.AddDbContextPool<EfContext>((provider, options) =>
+            services.AddRepository(options =>
             {
-                var configuration = provider.GetRequiredService<IConfiguration>();
                 var dbSettings = configuration.GetSection(nameof(DbSettings)).Get<DbSettings>();
-
+                
                 options.UseNpgsql(dbSettings.ConnectionString,
                     opt => opt.CommandTimeout(dbSettings.CommandTimeout).EnableRetryOnFailure());
 
